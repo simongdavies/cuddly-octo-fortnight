@@ -971,7 +971,8 @@
       "dependsOn": [
         "Microsoft.Resources/deployments/CreatingLoadBalancer",
         "Microsoft.Resources/deployments/CreatingStorageAccount",
-        "Microsoft.Resources/deployments/CreatingPublicIp"
+        "Microsoft.Resources/deployments/CreatingPublicIp",
+        "Microsoft.Resources/deployments/UpdatingVnetDns"
       ],
       "properties": {
         "mode": "Incremental",
@@ -1039,7 +1040,8 @@
       "dependsOn": [
         "Microsoft.Resources/deployments/CreatingNetScaler",
         "Microsoft.Resources/deployments/CreatingStorageAccount",
-        "Microsoft.Resources/deployments/CreatingPublicIp"
+        "Microsoft.Resources/deployments/CreatingPublicIp",
+        "Microsoft.Resources/deployments/CreatingNetScaler",
       ],
       "properties": {
         "mode": "Incremental",
@@ -1200,7 +1202,8 @@
       "dependsOn": [
         "Microsoft.Resources/deployments/CreatingLoadBalancer",
         "Microsoft.Resources/deployments/CreatingStorageAccount",
-        "Microsoft.Resources/deployments/CreatingPublicIp"
+        "Microsoft.Resources/deployments/CreatingPublicIp",
+         "Microsoft.Resources/deployments/CreatingDeliveryController",
       ],
       "properties": {
         "mode": "Incremental",
@@ -1310,7 +1313,8 @@
       "dependsOn": [
         "Microsoft.Resources/deployments/CreatingLoadBalancer",
         "Microsoft.Resources/deployments/CreatingStorageAccount",
-        "Microsoft.Resources/deployments/CreatingPublicIp"
+        "Microsoft.Resources/deployments/CreatingPublicIp",
+        "Microsoft.Resources/deployments/CreatingVda"
       ],
       "properties": {
         "mode": "Incremental",
