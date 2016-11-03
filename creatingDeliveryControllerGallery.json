@@ -410,11 +410,13 @@
             "publisher": "Microsoft.Powershell",
             "type": "DSC",
             "typeHandlerVersion": "[parameters('dscVersion')]",
+            "autoUpgradeMinorVersion": true,
             "settings": {
               "modulesUrl": "[parameters('configurationFileUrl')]",
               "sasToken": "[parameters('artifactsLocationSasToken')]",
               "configurationFunction": "[parameters('configurationFunction')]",
               "Properties": {
+                "wmfVersion": "4.0",
                 "AdminCreds": {
                   "UserName": "[parameters('adminUsername')]",
                   "Password": "PrivateSettingsRef:adminPassword"

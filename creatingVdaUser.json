@@ -290,8 +290,10 @@
           "properties": {
             "publisher": "Microsoft.Powershell",
             "type": "DSC",
+            "autoUpgradeMinorVersion": true,
             "typeHandlerVersion": "[parameters('dscVersion')]",
             "settings": {
+              "wmfVersion": "4.0",
               "modulesUrl": "[parameters('configurationFileUrl')]",
               "sasToken": "[parameters('artifactsLocationSasToken')]",
               "configurationFunction": "[parameters('configurationFunction')]",
