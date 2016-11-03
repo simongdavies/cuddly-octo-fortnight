@@ -757,6 +757,9 @@
           "publicIpName": {
             "value": "[parameters('publicIpName')]"
           },
+          "location": {
+            "value": "[parameters('location')]"
+          },
           "publicIpGroup": {
             "value": "[parameters('publicIpGroup')]"
           },
