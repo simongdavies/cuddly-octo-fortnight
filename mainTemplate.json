@@ -14,7 +14,7 @@
     },
     "vhdStorageType": {
       "type": "string",
-      "defaultValue": "Standard_LRS",
+      "defaultValue": "Premium_LRS",
       "allowedValues": [
         "Standard_LRS",
         "Standard_GRS",
@@ -236,7 +236,7 @@
         "artifactsBaseUrl": "",
         "description": "Specifies the base location of the child templates and desired state configuration scripts."
       },
-      "defaultValue": "https://github.com/AsraFatima/azure-quickstart-templates/raw/master/citrix-xd-site-basic"
+      "defaultValue": "https://raw.githubusercontent.com/simongdavies/cuddly-octo-fortnight/master"
     },
 
     "artifactsBaseUrlSasToken": {
