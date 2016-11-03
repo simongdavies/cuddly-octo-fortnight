@@ -301,7 +301,6 @@
             "typeHandlerVersion": "[parameters('dscVersion')]",
             "settings": {
               "modulesUrl": "[parameters('configurationFileUrl')]",
-              "wmfVersion": "4.0",
               "sasToken": "[parameters('artifactsLocationSasToken')]",
               "configurationFunction": "[parameters('configurationFunction')]",
               "Properties": {
