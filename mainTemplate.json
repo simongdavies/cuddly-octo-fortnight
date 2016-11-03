@@ -307,7 +307,7 @@
       "offer": "WindowsServer",
       "sku": "2012-R2-Datacenter",
       "machineName": "XA-JumpBox",
-      "machineSize": "Standard_A1",
+      "machineSize": "Standard_DS1_v2",
       "location": "[parameters('location')]",
       "configurationFileUrl": "[concat(variables('artifactsLocation'), 'DSC/JumpBox.ps1.zip')]",
       "configurationFunction": "JumpBox.ps1\\JumpBox",
