@@ -74,22 +74,15 @@
                 "label": "Size",
                 "toolTip": "Specify the size of all the virtual machines in the deployment. A total of 6 virtual machines of the specified size will be created as a part of the solution template deployment.",
                 "recommendedSizes": [
-                  "Standard_A2",
-                  "Standard_A3",
-                  "Standard_A4"
+                    "Standard_DS12_v2",
+                    "Standard_DS13_v2",
+                    "Standard_DS14_v2"
                 ],
                 "constraints": {
                   "allowedSizes": [
-                    "Standard_A2",
-                    "Standard_A3",
-                    "Standard_A4",
-                    "Standard_D12",
-                    "Standard_D13",
-                    "Standard_D14",
-                    "Standard_G2",
-                    "Standard_G3",
-                    "Standard_G4",
-                    "Standard_G5"
+                    "Standard_DS12_v2",
+                    "Standard_DS13_v2",
+                    "Standard_DS14_v2"
                   ]
                 },
                 "osPlatform": "Windows",
