@@ -1194,7 +1194,164 @@
         }
       }
     },
+    {
+      "name": "CreatingDeliveryControllerExtension",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+          "Microsoft.Resources/deployments/CreatingDeliveryController"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('deliveryControllerSettings').templateUri]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
 
+          // Infrastructure
+          "vhdStorageAccount": {
+            "value": "[parameters('vhdStorageAccount')]"
+          },
+          "imageUri": {
+            "value": "[variables('deliveryControllerSettings').userImageUri]"
+          },
+          "publisher": {
+            "value": "[variables('deliveryControllerSettings').publisher]"
+          },
+          "offer": {
+            "value": "[variables('deliveryControllerSettings').offer]"
+          },
+          "sku": {
+            "value": "[variables('deliveryControllerSettings').sku]"
+          },
+          "machineSize": {
+            "value": "[variables('deliveryControllerSettings').machineSize]"
+          },
+          "machineName": {
+            "value": "[variables('deliveryControllerSettings').machineName]"
+          },
+          "privateIp": {
+            "value": "[variables('deliveryControllerSettings').privateIp]"
+          },
+          "availabilitySetId": {
+            "value": "[variables('availabilitySetId')]"
+          },
+          "subnetId": {
+            "value": "[variables('subnetId')]"
+          },
+          "dnsServers": {
+            "value": "[variables('dnsServers')]"
+          },
+          "lbBapId": {
+            "value": "[variables('loadBalancerSettings').lbapid]"
+          },
+          "lbInboundRules": {
+            "value": "[concat(variables('deliveryControllerSettings').inboundRulesInitial, parameters('customInboundRules').assignments.deliveryController)]"
+          },
+
+          // Credentials and domain
+          "adminUsername": {
+            "value": "[parameters('adminUsername')]"
+          },
+          "adminPassword": {
+            "value": "[parameters('adminPassword')]"
+          },
+          "domainName": {
+            "value": "[parameters('domainName')]"
+          },
+          "domainControllerFQDN": {
+            "value": "[variables('domainControllerSettings').fqdn]"
+          },
+          "domainControllerPrivateIp": {
+            "value": "[variables('domainControllerSettings').privateIp]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+
+          // Delegated servers
+          "sqlServerFQDN": {
+            "value": "[variables('sqlServerSettings').fqdn]"
+          },
+          "sqlServerInstance": {
+            "value": "[variables('sqlServerSettings').instance]"
+          },
+          "licenseServerFQDN": {
+            "value": "[variables('licenseServerSettings').fqdn]"
+          },
+          "netScalerPrivateIp": {
+            "value": "[variables('netScalerSettings').privateIp]"
+          },
+
+          // StoreFront
+          "storeFrontFQDN": {
+            "value": "[variables('storeFrontSettings').fqdn]"
+          },
+          "virtualServerName": {
+            "value": "[variables('netScalerSettings').virtualServerName]"
+          },
+          "virtualServerPort": {
+            "value": "[variables('netScalerSettings').httpsPort]"
+          },
+          "forwardServerPort": {
+            "value": "[variables('netScalerSettings').httpPort]"
+          },
+          "storeFrontGatewayName": {
+            "value": "[variables('storeFrontSettings').gatewayName]"
+          },
+          "emailAddress": {
+            "value": "[parameters('emailAddress')]"
+          },
+          "certificateAuthority": {
+            "value": "[parameters('certificateAuthority')]"
+          },
+          "acmeServer": {
+            "value": "[parameters('acmeServer')]"
+          },
+          "gatewayFQDN": {
+            "value": "[variables('gatewayFQDN')]"
+          },
+          "deploymentFQDN": {
+            "value": "[variables('deploymentFQDN')]"
+          },
+          "themeUri": {
+            "value": "[variables('storeFrontSettings').themeUri]"
+          },
+          "html5Mode": {
+            "value": "[variables('storeFrontSettings').html5Mode]"
+          },
+          "appGroups": {
+            "value": "[concat(variables('storeFrontSettings').appGroups, parameters('customApplications').appGroups)]"
+          },
+
+          // Delivery controller
+          "deliveryControllerFQDN": {
+            "value": "[concat(variables('deliveryControllerSettings').fqdn)]"
+          },
+          "siteName": {
+            "value": "[parameters('siteName')]"
+          },
+
+          // Configuration
+          "artifactsLocationUri": {
+            "value": "[variables('artifactsLocation')]"
+          },
+          "artifactsLocationSasToken": {
+            "value": "[variables('artifactsLocationSasToken')]"
+          },
+          "dscVersion": {
+            "value": "[variables('dscVersion')]"
+          },
+          "configurationFileUrl": {
+            "value": "[variables('deliveryControllerSettings').configurationFileUrl]"
+          },
+          "configurationFunction": {
+            "value": "[variables('deliveryControllerSettings').configurationFunction]"
+          }
+        }
+      }
+    },
     {
       "name": "CreatingVda",
       "type": "Microsoft.Resources/deployments",
