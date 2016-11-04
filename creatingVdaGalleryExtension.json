@@ -202,7 +202,7 @@
     "resources": [
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "configure",
+            "name": "[concat(parameters('machineName'),'/configure')]",
             "apiVersion": "2015-06-15",
             "tags": {
                 "displayName": "VdaConfiguration"
