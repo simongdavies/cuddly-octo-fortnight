@@ -208,9 +208,6 @@
                 "displayName": "VdaConfiguration"
             },
             "location": "[parameters('location')]",
-            "dependsOn": [
-                "[variables('machineId')]"
-            ],
             "properties": {
                 "publisher": "Microsoft.Powershell",
                 "type": "DSC",

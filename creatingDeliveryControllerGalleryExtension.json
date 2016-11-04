@@ -308,9 +308,6 @@
             },
             "apiVersion": "2015-06-15",
             "location": "[parameters('location')]",
-            "dependsOn": [
-                "[variables('machineId')]"
-            ],
             "properties": {
                 "publisher": "Microsoft.Powershell",
                 "type": "DSC",
