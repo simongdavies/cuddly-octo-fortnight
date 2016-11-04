@@ -1366,7 +1366,7 @@
         "Microsoft.Resources/deployments/CreatingLoadBalancer",
         "Microsoft.Resources/deployments/CreatingStorageAccount",
         "Microsoft.Resources/deployments/CreatingPublicIp",
-        "Microsoft.Resources/deployments/CreatingNetScaler",
+        "Microsoft.Resources/deployments/CreatingDeliveryController",
       ],
       "properties": {
         "mode": "Incremental",
@@ -1586,7 +1586,7 @@
         "Microsoft.Resources/deployments/CreatingLoadBalancer",
         "Microsoft.Resources/deployments/CreatingStorageAccount",
         "Microsoft.Resources/deployments/CreatingPublicIp",
-        "Microsoft.Resources/deployments/CreatingNetScaler"
+        "Microsoft.Resources/deployments/CreatingVda"
       ],
       "properties": {
         "mode": "Incremental",
