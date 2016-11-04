@@ -301,7 +301,7 @@
     },
     "resources": [
         {
-            "type": "extensions",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
             "name": "configure",
             "tags": {
                 "displayName": "ControllerConfiguration"

@@ -346,6 +346,7 @@
 
     "deliveryControllerSettings": {
       "templateUri": "[concat(variables('artifactsLocation'), 'creatingDeliveryController', parameters('imageType'), '.json')]",
+      "extensionUri": "[concat(variables('artifactsLocation'), 'creatingDeliveryController', parameters('imageType'), 'Extension.json')]",
       "userImageUri": "[concat(variables('userImageLocation'), 'XD-ALL.vhd')]",
       "publisher": "citrix",
       "offer": "[concat('xenapp-server', parameters('imageQualifier'))]",
@@ -608,6 +609,7 @@
     ],
     "vdaSettings": {
       "templateUri": "[concat(variables('artifactsLocation'), 'creatingVda', parameters('imageType'), '.json')]",
+      "extensionUri": "[concat(variables('artifactsLocation'), 'creatingVda', parameters('imageType'), 'Extension.json')]",
       "userImageUri": "[concat(variables('userImageLocation'), 'XD-VDA.vhd')]",
       "publisher": "citrix",
       "offer": "[concat('xenapp-vda-rdsh', parameters('imageQualifier'))]",
@@ -627,6 +629,7 @@
 
     "vdiSettings": {
       "templateUri": "[concat(variables('artifactsLocation'), 'creatingVda', parameters('imageType'), '.json')]",
+      "extensionUri": "[concat(variables('artifactsLocation'), 'creatingVda', parameters('imageType'), 'Extension.json')]",
       "userImageUri": "[concat(variables('userImageLocation'), 'XD-VDI.vhd')]",
       "publisher": "citrix",
       "offer": "[concat('xenapp-vda-vdi', parameters('imageQualifier'))]",
@@ -1207,7 +1210,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[variables('deliveryControllerSettings').templateUri]",
+          "uri": "[variables('deliveryControllerSettings').ExtensionUri]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -1363,7 +1366,7 @@
         "Microsoft.Resources/deployments/CreatingLoadBalancer",
         "Microsoft.Resources/deployments/CreatingStorageAccount",
         "Microsoft.Resources/deployments/CreatingPublicIp",
-         "Microsoft.Resources/deployments/CreatingDeliveryController",
+        "Microsoft.Resources/deployments/CreatingNetScaler",
       ],
       "properties": {
         "mode": "Incremental",
@@ -1465,7 +1468,116 @@
         }
       }
     },
-
+    {
+      "name": "CreatingVdaExtension",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "Microsoft.Resources/deployments/CreatingLoadBalancer",
+        "Microsoft.Resources/deployments/CreatingStorageAccount",
+        "Microsoft.Resources/deployments/CreatingPublicIp",
+         "Microsoft.Resources/deployments/CreatingVda",
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('vdaSettings').extensionsUri]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "vhdStorageAccount": {
+            "value": "[parameters('vhdStorageAccount')]"
+          },
+          "imageUri": {
+            "value": "[variables('vdaSettings').userImageUri]"
+          },
+          "publisher": {
+            "value": "[variables('vdaSettings').publisher]"
+          },
+          "offer": {
+            "value": "[variables('vdaSettings').offer]"
+          },
+          "sku": {
+            "value": "[variables('vdaSettings').sku]"
+          },
+          "machineSize": {
+            "value": "[variables('vdaSettings').machineSize]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "machineName": {
+            "value": "[variables('vdaSettings').vdaPrefix]"
+          },
+          "availabilitySetId": {
+            "value": "[variables('availabilitySetId')]"
+          },
+          "subnetId": {
+            "value": "[variables('subnetId')]"
+          },
+          "dnsServers": {
+            "value": "[variables('dnsServers')]"
+          },
+          "privateIp": {
+            "value": "[variables('vdaSettings').privateIp]"
+          },
+          "lbBapId": {
+            "value": "[variables('loadBalancerSettings').lbapid]"
+          },
+          "lbInboundRules": {
+            "value": "[concat(variables('vdaSettings').inboundRules, parameters('customInboundRules').assignments.vda)]"
+          },
+          "domainName": {
+            "value": "[parameters('domainName')]"
+          },
+          "domainControllerFQDN": {
+            "value": "[variables('domainControllerSettings').fqdn]"
+          },
+          "domainControllerIp": {
+            "value": "[variables('domainControllerSettings').privateIp]"
+          },
+          "adminUsername": {
+            "value": "[parameters('adminUsername')]"
+          },
+          "adminPassword": {
+            "value": "[parameters('adminPassword')]"
+          },
+          "deliveryControllerFQDN": {
+            "value": "[variables('deliveryControllerSettings').fqdn]"
+          },
+          "packages": {
+            "value": "[concat(variables('vdaSettings').chocolateyPackages, parameters('customApplications').chocolateyPackages)]"
+          },
+          "publishedApplications": {
+            "value": "[concat(variables('vdaSettings').publishedApplications, parameters('customApplications').publishedApplications)]"
+          },
+          "storeFrontUrl": {
+            "value": "[variables('paths').storeFrontUrl]"
+          },
+          "deploymentFQDN": {
+            "value": "[variables('deploymentFQDN')]"
+          },
+          "gatewayFQDN": {
+            "value": "[variables('gatewayFQDN')]"
+          },
+          "artifactsLocationUri": {
+            "value": "[variables('artifactsLocation')]"
+          },
+          "artifactsLocationSasToken": {
+            "value": "[variables('artifactsLocationSasToken')]"
+          },
+          "dscVersion": {
+            "value": "[variables('dscVersion')]"
+          },
+          "configurationFileUrl": {
+            "value": "[variables('vdaSettings').configurationFileUrl]"
+          },
+          "configurationFunction": {
+            "value": "[variables('vdaSettings').configurationFunction]"
+          }
+        }
+      }
+    },
     {
       "name": "CreatingVdi",
       "type": "Microsoft.Resources/deployments",
@@ -1474,7 +1586,7 @@
         "Microsoft.Resources/deployments/CreatingLoadBalancer",
         "Microsoft.Resources/deployments/CreatingStorageAccount",
         "Microsoft.Resources/deployments/CreatingPublicIp",
-        "Microsoft.Resources/deployments/CreatingVda"
+        "Microsoft.Resources/deployments/CreatingNetScaler"
       ],
       "properties": {
         "mode": "Incremental",
@@ -1576,7 +1688,117 @@
         }
       }
     },
-
+    {
+      "name": "CreatingVdiExtensions",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2015-01-01",
+      "dependsOn": [
+        "Microsoft.Resources/deployments/CreatingLoadBalancer",
+        "Microsoft.Resources/deployments/CreatingStorageAccount",
+        "Microsoft.Resources/deployments/CreatingPublicIp",
+        "Microsoft.Resources/deployments/CreatingVdaExtensions",
+        "Microsoft.Resources/deployments/CreatingVdi"
+      ],
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('vdiSettings').templateUri]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "vhdStorageAccount": {
+            "value": "[parameters('vhdStorageAccount')]"
+          },
+          "imageUri": {
+            "value": "[variables('vdiSettings').userImageUri]"
+          },
+          "publisher": {
+            "value": "[variables('vdiSettings').publisher]"
+          },
+          "offer": {
+            "value": "[variables('vdiSettings').offer]"
+          },
+          "sku": {
+            "value": "[variables('vdiSettings').sku]"
+          },
+          "machineSize": {
+            "value": "[variables('vdiSettings').machineSize]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "machineName": {
+            "value": "[variables('vdiSettings').vdaPrefix]"
+          },
+          "availabilitySetId": {
+            "value": "[variables('availabilitySetId')]"
+          },
+          "subnetId": {
+            "value": "[variables('subnetId')]"
+          },
+          "dnsServers": {
+            "value": "[variables('dnsServers')]"
+          },
+          "privateIp": {
+            "value": "[variables('vdiSettings').privateIp]"
+          },
+          "lbBapId": {
+            "value": "[variables('loadBalancerSettings').lbapid]"
+          },
+          "lbInboundRules": {
+            "value": "[concat(variables('vdiSettings').inboundRules, parameters('customInboundRules').assignments.vdi)]"
+          },
+          "domainName": {
+            "value": "[parameters('domainName')]"
+          },
+          "domainControllerFQDN": {
+            "value": "[variables('domainControllerSettings').fqdn]"
+          },
+          "adminUsername": {
+            "value": "[parameters('adminUsername')]"
+          },
+          "adminPassword": {
+            "value": "[parameters('adminPassword')]"
+          },
+          "deliveryControllerFQDN": {
+            "value": "[variables('deliveryControllerSettings').fqdn]"
+          },
+          "domainControllerIp": {
+            "value": "[variables('domainControllerSettings').privateIp]"
+          },
+          "packages": {
+            "value": "[variables('vdiSettings').chocolateyPackages]"
+          },
+          "publishedApplications": {
+            "value": "[variables('vdiSettings').publishedApplications]"
+          },
+          "storeFrontUrl": {
+            "value": "[variables('paths').storeFrontUrl]"
+          },
+          "deploymentFQDN": {
+            "value": "[variables('deploymentFQDN')]"
+          },
+          "gatewayFQDN": {
+            "value": "[variables('gatewayFQDN')]"
+          },
+          "artifactsLocationUri": {
+            "value": "[variables('artifactsLocation')]"
+          },
+          "artifactsLocationSasToken": {
+            "value": "[variables('artifactsLocationSasToken')]"
+          },
+          "dscVersion": {
+            "value": "[variables('dscVersion')]"
+          },
+          "configurationFileUrl": {
+            "value": "[variables('vdiSettings').configurationFileUrl]"
+          },
+          "configurationFunction": {
+            "value": "[variables('vdiSettings').configurationFunction]"
+          }
+        }
+      }
+    },
     {
       "name": "UpdatingInboundRules",
       "type": "Microsoft.Resources/deployments",
