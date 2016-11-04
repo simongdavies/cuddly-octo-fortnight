@@ -1696,7 +1696,7 @@
         "Microsoft.Resources/deployments/CreatingLoadBalancer",
         "Microsoft.Resources/deployments/CreatingStorageAccount",
         "Microsoft.Resources/deployments/CreatingPublicIp",
-        "Microsoft.Resources/deployments/CreatingVdaExtensions",
+        "Microsoft.Resources/deployments/CreatingVdaExtension",
         "Microsoft.Resources/deployments/CreatingVdi"
       ],
       "properties": {
