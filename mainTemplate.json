@@ -168,7 +168,6 @@
 
     "emailAddress": {
       "type": "string",
-      "defaultValue": "",
       "metadata": {
         "description": "Specifies the email address that that will be used to request a public SSL certificate for NetScaler gateway from letsencrypt.org on your behalf. This will also be used to notify you when the template has deployed successfully."
       }
