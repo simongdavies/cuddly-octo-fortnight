@@ -281,52 +281,7 @@
             }
           ]
         }
-      },
-      "resources": [
-        {
-          "type": "extensions",
-          "name": "configure",
-          "apiVersion": "2015-06-15",
-          "tags": {
-            "displayName": "VdaConfiguration"
-          },
-          "location": "[parameters('location')]",
-          "dependsOn": [
-            "[variables('machineId')]"
-          ],
-          "properties": {
-            "publisher": "Microsoft.Powershell",
-            "type": "DSC",
-            "autoUpgradeMinorVersion": true,
-            "typeHandlerVersion": "[parameters('dscVersion')]",
-            "settings": {
-              "modulesUrl": "[parameters('configurationFileUrl')]",
-              "sasToken": "[parameters('artifactsLocationSasToken')]",
-              "configurationFunction": "[parameters('configurationFunction')]",
-              "Properties": {
-                "DomainName": "[parameters('domainName')]",
-                "AdminCreds": {
-                  "UserName": "[parameters('adminUsername')]",
-                  "Password": "PrivateSettingsRef:adminPassword"
-                },
-                "DomainController": "[parameters('domainControllerFQDN')]",
-                "DomainControllerIp": "[parameters('domainControllerIp')]",
-                "DeliveryController": "[parameters('deliveryControllerFQDN')]",
-                "DeploymentFQDN": "[parameters('deploymentFQDN')]",
-                "GatewayFQDN": "[parameters('gatewayFQDN')]",
-                "Packages": "[parameters('packages')]",
-                "PublishedApplications": "[parameters('publishedApplications')]",
-                "StoreFrontUrl": "[parameters('storeFrontUrl')]"
-              }
-            },
-            "protectedSettings": {
-              "Items": {
-                "adminPassword": "[parameters('adminPassword')]"
-              }
-            }
-          }
-        }
-      ]
+      }
     }
   ]
 }
