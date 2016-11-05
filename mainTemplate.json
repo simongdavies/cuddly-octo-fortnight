@@ -803,6 +803,9 @@
           },
           "dnsServers": {
             "value": "[variables('dnsServers')]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
           }
         }
       }
@@ -1860,6 +1863,9 @@
           },
           "rules": {
             "value": "[concat(variables('deliveryControllerSettings').inboundRulesFinal, parameters('customInboundRules').assignments.deliveryController)]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
           }
         }
       }
@@ -1893,6 +1899,9 @@
           },
           "rules": {
             "value": "[concat(variables('netScalerSettings').inboundRulesFinal, parameters('customInboundRules').assignments.netScaler)]"
+          },
+          "location": {
+            "value": "[parameters('location')]"
           }
         }
       }
