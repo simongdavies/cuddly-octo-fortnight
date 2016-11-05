@@ -1807,7 +1807,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "dependsOn": [
-        "Microsoft.Resources/deployments/CreatingDeliveryController"
+        "Microsoft.Resources/deployments/CreatingDeliveryControllerExtension"
       ],
       "properties": {
         "mode": "Incremental",
