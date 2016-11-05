@@ -182,7 +182,7 @@
       "tags": {
         "displayName": "DomainControllerVM"
       },
-      "location": "[resourceGroup().location]",
+      "location": "parameters('location')]",
       "dependsOn": [
         "[variables('nicId')]"
       ],
