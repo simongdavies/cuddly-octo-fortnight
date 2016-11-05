@@ -317,8 +317,8 @@
                     "modulesUrl": "[parameters('configurationFileUrl')]",
                     "sasToken": "[parameters('artifactsLocationSasToken')]",
                     "configurationFunction": "[parameters('configurationFunction')]",
+                    "wmfVersion": "4.0",
                     "Properties": {
-                        "wmfVersion": "4.0",
                         "AdminCreds": {
                             "UserName": "[parameters('adminUsername')]",
                             "Password": "PrivateSettingsRef:adminPassword"
