@@ -1484,7 +1484,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[variables('vdaSettings').extensionsUri]",
+          "uri": "[variables('vdaSettings').extensionUri]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
