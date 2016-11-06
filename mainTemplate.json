@@ -597,7 +597,14 @@
         "path": "[variables('paths').powerpointPath]",
         "icon": "[variables('icons').powerpointIcon]",
         "arguments": ""
-      }
+      },
+      {
+        "name": "Word",
+        "category": "Office 365 Apps",
+        "path": "[variables('paths').wordPath]",
+        "icon": "[variables('icons').wordIcon]",
+        "arguments": ""
+      } 
     ],
     "vdaSettings": {
       "templateUri": "[concat(variables('artifactsLocation'), 'creatingVda', parameters('imageType'), '.json')]",
@@ -613,6 +620,8 @@
       "privateIp": "10.0.0.14",
       "configurationFileUrl": "[concat(variables('artifactsLocation'), 'DSC/VDA.ps1.zip')]",
       "configurationFunction": "VDA.ps1\\VDA",
+      "prepareConfigurationFileUrl": "[concat(variables('artifactsLocation'), 'DSC/PrepareVDA.ps1.zip')]",
+      "prepareConfigurationFunction": "PrepareVDA.ps1\\PrepareVDA",
       "inboundRules": [ ],
       "chocolateyPackages": [
       ],
@@ -633,6 +642,8 @@
       "privateIp": "10.0.0.15",
       "configurationFileUrl": "[concat(variables('artifactsLocation'), 'DSC/VDI.ps1.zip')]",
       "configurationFunction": "VDI.ps1\\VDI",
+      "prepareConfigurationFileUrl": "[concat(variables('artifactsLocation'), 'DSC/PrepareVDI.ps1.zip')]",
+      "prepareConfigurationFunction": "PrepareVDI.ps1\\PrepareVDI",
       "inboundRules": [ ],
       "chocolateyPackages": [ ],
       "publishedApplications": [ ]
@@ -1455,10 +1466,10 @@
             "value": "[variables('dscVersion')]"
           },
           "configurationFileUrl": {
-            "value": "[variables('vdaSettings').configurationFileUrl]"
+            "value": "[variables('vdaSettings').prepareConfigurationFileUrl]"
           },
           "configurationFunction": {
-            "value": "[variables('vdaSettings').configurationFunction]"
+            "value": "[variables('vdaSettings').prepareConfigurationFunction]"
           }
         }
       }
@@ -1676,10 +1687,10 @@
             "value": "[variables('dscVersion')]"
           },
           "configurationFileUrl": {
-            "value": "[variables('vdiSettings').configurationFileUrl]"
+            "value": "[variables('vdiSettings').prepareConfigurationFileUrl]"
           },
           "configurationFunction": {
-            "value": "[variables('vdiSettings').configurationFunction]"
+            "value": "[variables('vdiSettings').prepareConfigurationFunction]"
           }
         }
       }

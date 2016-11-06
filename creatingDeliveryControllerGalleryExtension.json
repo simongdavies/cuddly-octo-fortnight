@@ -302,7 +302,7 @@
     "resources": [
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(parameters('machineName'),'/configure')]",
+            "name": "[concat(parameters('machineName'),'/configureController')]",
             "tags": {
                 "displayName": "ControllerConfiguration"
             },
