@@ -441,192 +441,99 @@
       "netScalerHttp": 11480
     },
 
-    "paths": {
-      "iePath": "C:\\Program Files\\Internet Explorer\\iexplore.exe",
-      "studioPath": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Citrix\\Citrix Studio.lnk",
-      "rdpPath": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Accessories\\Remote Desktop Connection.lnk",
-      "rdpPath1": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\System Tools\\Remote Desktop Connection.lnk",
-      "storeFrontUrl": "[concat('https://', variables('storeFrontSettings').machineName, '.', parameters('domainName'), '/Citrix/Store')]",
-      "directorUrl": "[concat('https://', variables('directorSettings').machineName, '.', parameters('domainName'), '/director')]",
-      "netScalerUrl": "[concat('http://', variables('netScalerSettings').privateIp)]",
-      "outlookPath": "C:\\Program Files\\Microsoft Office 15\\root\\office15\\OUTLOOK.EXE",
-      "wordPath": "C:\\Program Files\\Microsoft Office 15\\root\\office15\\WINWORD.EXE",
-      "excelPath": "C:\\Program Files\\Microsoft Office 15\\root\\office15\\EXCEL.EXE",
-      "onenotePath": "C:\\Program Files\\Microsoft Office 15\\root\\office15\\ONENOTE.EXE",
-      "powerpointPath": "C:\\Program Files\\Microsoft Office 15\\root\\office15\\POWERPNT.EXE"
-    },
-
-    "icons": {
-      "outlookIcon": "C:\\Program Files\\Microsoft Office 15\\root\\icons\\outlook.ico",
-      "excelIcon": "C:\\Program Files\\Microsoft Office 15\\root\\icons\\excel.ico",
-      "onenoteIcon": "C:\\Program Files\\Microsoft Office 15\\root\\icons\\onenote.ico",
-      "powerpointIcon": "C:\\Program Files\\Microsoft Office 15\\root\\icons\\powerpoint.ico",
-      "wordIcon": "C:\\Program Files\\Microsoft Office 15\\root\\icons\\word.ico"
-    },
-
-    "applications": [
-      {
-        "name": "Domain Controller",
-        "category": "Remote Desktop Connections",
-        "path": "[variables('paths').rdpPath]",
-        "icon": "[variables('paths').rdpPath]",
-        "arguments": "[concat('/v:', variables('domainControllerSettings').machineName, '.', parameters('domainName'))]"
-      },
-      {
-        "name": "XenApp Controller",
-        "category": "Remote Desktop Connections",
-        "path": "[variables('paths').rdpPath]",
-        "icon": "[variables('paths').rdpPath]",
-        "type": "Shortcut",
-        "arguments": "[concat('/v:', variables('deliveryControllerSettings').machineName, '.', parameters('domainName'))]"
-      },
-      {
-        "name": "XenApp VDA",
-        "category": "Remote Desktop Connections",
-        "path": "[variables('paths').rdpPath]",
-        "icon": "[variables('paths').rdpPath]",
-        "arguments": "[concat('/v:', 'XA-VDA', '.', parameters('domainName'))]"
-      },
-      {
-        "name": "NetScaler Web UI",
-        "category": "NetScaler Management",
-        "path": "[variables('paths').iePath]",
-        "icon": "[variables('paths').iePath]",
-        "arguments": "[variables('paths').netScalerUrl]"
-      },
-      {
-        "name": "XenApp Server VDI",
-        "category": "Remote Desktop Connections",
-        "path": "[variables('paths').rdpPath]",
-        "icon": "[variables('paths').rdpPath]",
-        "arguments": "[concat('/v:', 'XA-VDI', '.', parameters('domainName'))]"
-      },
-      {
-        "name": "Citrix Director",
-        "category": "Administrative Apps",
-        "path": "[variables('paths').iePath]",
-        "icon": "[variables('paths').studioPath]",
-        "arguments": "[variables('paths').directorUrl]"
-      },
-      {
-        "name": "Citrix Studio",
-        "category": "Administrative Apps",
-        "path": "[variables('paths').studioPath]",
-        "icon": "[variables('paths').studioPath]",
-        "type": "Shortcut",
-        "arguments": ""
-      }
-    ],
-
-    "vdaapplications": [
-      {
-        "name": "Domain Controller",
-        "category": "Remote Desktop Connections",
-        "path": "[variables('paths').rdpPath1]",
-        "icon": "[variables('paths').rdpPath1]",
-        "arguments": "[concat('/v:', variables('domainControllerSettings').machineName, '.', parameters('domainName'))]"
-      },
-      {
-        "name": "XenApp Controller",
-        "category": "Remote Desktop Connections",
-        "path": "[variables('paths').rdpPath1]",
-        "icon": "[variables('paths').rdpPath1]",
-        "type": "Shortcut",
-        "arguments": "[concat('/v:', variables('deliveryControllerSettings').machineName, '.', parameters('domainName'))]"
-      },
-      {
-        "name": "XenApp VDA",
-        "category": "Remote Desktop Connections",
-        "path": "[variables('paths').rdpPath1]",
-        "icon": "[variables('paths').rdpPath1]",
-        "arguments": "[concat('/v:', 'XA-VDA', '.', parameters('domainName'))]"
-      },
-      {
-        "name": "XenApp Server VDI",
-        "category": "Remote Desktop Connections",
-        "path": "[variables('paths').rdpPath1]",
-        "icon": "[variables('paths').rdpPath1]",
-        "arguments": "[concat('/v:', 'XA-VDI', '.', parameters('domainName'))]"
-      },
-      {
-        "name": "NetScaler Web UI",
-        "category": "NetScaler Management",
-        "path": "[variables('paths').iePath]",
-        "icon": "[variables('paths').iePath]",
-        "arguments": "[variables('paths').netScalerUrl]"
-      },
-      {
-        "name": "Citrix Director",
-        "category": "Administrative Apps",
-        "path": "[variables('paths').iePath]",
-        "icon": "[variables('paths').studioPath]",
-        "arguments": "[variables('paths').directorUrl]"
-      },
-      {
-        "name": "Citrix Studio",
-        "category": "Administrative Apps",
-        "path": "[variables('paths').studioPath]",
-        "icon": "[variables('paths').studioPath]",
-        "type": "Shortcut",
-        "arguments": ""
-      },
-      {
-        "name": "Outlook",
-        "category": "Office 365 Apps",
-        "path": "[variables('paths').outlookPath]",
-        "icon": "[variables('icons').outlookIcon]",
-        "arguments": ""
-      },
-      {
-        "name": "Excel",
-        "category": "Office 365 Apps",
-        "path": "[variables('paths').excelPath]",
-        "icon": "[variables('icons').excelIcon]",
-        "arguments": ""
-      },
-      {
-        "name": "OneNote",
-        "category": "Office 365 Apps",
-        "path": "[variables('paths').onenotePath]",
-        "icon": "[variables('icons').onenoteIcon]",
-        "arguments": ""
-      },
-      {
-        "name": "PowerPoint",
-        "category": "Office 365 Apps",
-        "path": "[variables('paths').powerpointPath]",
-        "icon": "[variables('icons').powerpointIcon]",
-        "arguments": ""
-      },
-      {
-        "name": "Word",
-        "category": "Office 365 Apps",
-        "path": "[variables('paths').wordPath]",
-        "icon": "[variables('icons').wordIcon]",
-        "arguments": ""
-      } 
-    ],
-    "vdaSettings": {
-      "templateUri": "[concat(variables('artifactsLocation'), 'creatingVda', parameters('imageType'), '.json')]",
-      "extensionUri": "[concat(variables('artifactsLocation'), 'creatingVda', parameters('imageType'), 'Extension.json')]",
-      "userImageUri": "[concat(variables('userImageLocation'), 'XD-VDA.vhd')]",
-      "publisher": "citrix",
-      "offer": "[concat('xenapp-vda-rdsh', parameters('imageQualifier'))]",
-      "sku": "coldfirerdsh",
-      "vdaPrefix": "XA-VDA",
-      "machineSize": "[parameters('machineSize')]",
-      "location": "[parameters('location')]",
-      "vdaCount": 1,
-      "privateIp": "10.0.0.14",
-      "configurationFileUrl": "[concat(variables('artifactsLocation'), 'DSC/VDA.ps1.zip')]",
-      "configurationFunction": "VDA.ps1\\VDA",
-      "prepareConfigurationFileUrl": "[concat(variables('artifactsLocation'), 'DSC/PrepareVDA.ps1.zip')]",
-      "prepareConfigurationFunction": "PrepareVDA.ps1\\PrepareVDA",
-      "inboundRules": [ ],
-      "chocolateyPackages": [
-      ],
-      "publishedApplications": "[variables('vdaapplications')]"
-    },
+     "paths": {
+            "iePath": "C:\\Program Files\\Internet Explorer\\iexplore.exe",
+            "studioPath": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Citrix\\Citrix Studio.lnk",
+            "rdpPath": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Accessories\\Remote Desktop Connection.lnk",
+            "storeFrontUrl": "[concat('https://', variables('storeFrontSettings').machineName, '.', parameters('domainName'), '/Citrix/Store')]",
+            "directorUrl": "[concat('https://', variables('directorSettings').machineName, '.', parameters('domainName'), '/director')]",
+            "netScalerUrl": "[concat('http://', variables('netScalerSettings').privateIp)]",
+            "outlookPath": "C:\\Program Files\\Microsoft Office 15\\root\\office15\\OUTLOOK.EXE",
+            "wordPath": "C:\\Program Files\\Microsoft Office 15\\root\\office15\\WINWORD.EXE",
+            "excelPath": "C:\\Program Files\\Microsoft Office 15\\root\\office15\\EXCEL.EXE",
+            "onenotePath": "C:\\Program Files\\Microsoft Office 15\\root\\office15\\ONENOTE.EXE",
+            "powerpointPath": "C:\\Program Files\\Microsoft Office 15\\root\\office15\\POWERPNT.EXE"
+        },
+        "icons": {
+            "outlookIcon": "C:\\Program Files\\Microsoft Office 15\\root\\icons\\outlook.ico",
+            "excelIcon": "C:\\Program Files\\Microsoft Office 15\\root\\icons\\excel.ico",
+            "onenoteIcon": "C:\\Program Files\\Microsoft Office 15\\root\\icons\\onenote.ico",
+            "powerpointIcon": "C:\\Program Files\\Microsoft Office 15\\root\\icons\\powerpoint.ico",
+            "wordIcon": "C:\\Program Files\\Microsoft Office 15\\root\\icons\\word.ico"
+        },
+        "applications": [
+            {
+                "name": "Domain Controller",
+                "category": "Remote Desktop Connections",
+                "path": "[variables('paths').rdpPath]",
+                "icon": "[variables('paths').rdpPath]",
+                "arguments": "[concat('/v:', variables('domainControllerSettings').machineName, '.', parameters('domainName'))]"
+            },
+            {
+                "name": "XenApp Controller",
+                "category": "Remote Desktop Connections",
+                "path": "[variables('paths').rdpPath]",
+                "icon": "[variables('paths').rdpPath]",
+                "type": "Shortcut",
+                "arguments": "[concat('/v:', variables('deliveryControllerSettings').machineName, '.', parameters('domainName'))]"
+            },
+            {
+                "name": "XenApp VDA",
+                "category": "Remote Desktop Connections",
+                "path": "[variables('paths').rdpPath]",
+                "icon": "[variables('paths').rdpPath]",
+                "arguments": "[concat('/v:', 'XA-VDA', '.', parameters('domainName'))]"
+            },
+            {
+                "name": "NetScaler Web UI",
+                "category": "NetScaler Management",
+                "path": "[variables('paths').iePath]",
+                "icon": "[variables('paths').iePath]",
+                "arguments": "[variables('paths').netScalerUrl]"
+            },
+            {
+                "name": "XenApp Server VDI",
+                "category": "Remote Desktop Connections",
+                "path": "[variables('paths').rdpPath]",
+                "icon": "[variables('paths').rdpPath]",
+                "arguments": "[concat('/v:', 'XA-VDI', '.', parameters('domainName'))]"
+            },
+            {
+                "name": "Citrix Director",
+                "category": "Administrative Apps",
+                "path": "[variables('paths').iePath]",
+                "icon": "[variables('paths').studioPath]",
+                "arguments": "[variables('paths').directorUrl]"
+            },
+            {
+                "name": "Citrix Studio",
+                "category": "Administrative Apps",
+                "path": "[variables('paths').studioPath]",
+                "icon": "[variables('paths').studioPath]",
+                "type": "Shortcut",
+                "arguments": ""
+            }
+        ],
+        "vdaSettings": {
+            "templateUri": "[concat(variables('artifactsLocation'), 'creatingVda', parameters('imageType'), '.json')]",
+            "extensionUri": "[concat(variables('artifactsLocation'), 'creatingVda', parameters('imageType'), 'Extension.json')]",
+            "userImageUri": "[concat(variables('userImageLocation'), 'XD-VDA.vhd')]",
+            "publisher": "citrix",
+            "offer": "[concat('xenapp-vda-rdsh', parameters('imageQualifier'))]",
+            "sku": "coldfirerdsh",
+            "vdaPrefix": "XA-VDA",
+            "machineSize": "[parameters('machineSize')]",
+            "location": "[parameters('location')]",
+            "vdaCount": 1,
+            "privateIp": "10.0.0.14",
+            "configurationFileUrl": "[concat(variables('artifactsLocation'), 'DSC/VDA.ps1.zip')]",
+            "configurationFunction": "VDA.ps1\\VDA",
+            "prepareConfigurationFileUrl": "[concat(variables('artifactsLocation'), 'DSC/PrepareVDA.ps1.zip')]",
+            "prepareConfigurationFunction": "PrepareVDA.ps1\\PrepareVDA",
+            "inboundRules": [],
+            "chocolateyPackages": [],
+            "publishedApplications": "[variables('applications')]"
+        },
 
     "vdiSettings": {
       "templateUri": "[concat(variables('artifactsLocation'), 'creatingVda', parameters('imageType'), '.json')]",
