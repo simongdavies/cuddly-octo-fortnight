@@ -441,7 +441,7 @@
       "netScalerHttp": 11480
     },
 
-    ""paths": {
+  "paths": {
       "iePath": "C:\\Program Files\\Internet Explorer\\iexplore.exe",
       "studioPath": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Citrix\\Citrix Studio.lnk",
       "rdpPath": "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Accessories\\Remote Desktop Connection.lnk",      
@@ -516,6 +516,7 @@
         "arguments": ""
       }
     ],
+
     "vdaSettings": {
       "templateUri": "[concat(variables('artifactsLocation'), 'creatingVda', parameters('imageType'), '.json')]",
       "extensionUri": "[concat(variables('artifactsLocation'), 'creatingVda', parameters('imageType'), 'Extension.json')]",
